@@ -46,6 +46,7 @@ end
 gem 'thin'
 gem 'simple_form'
 gem 'haml'
+gem 'geocoder'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
