@@ -6,7 +6,7 @@ describe Concern do
   end
 
   it 'should have a location' do
-    @concern = FactoryGirl.build(:concern, location: nil).should_not be_valid
+    FactoryGirl.build(:concern, location: nil).should_not be_valid
   end
 
   it 'should have a name' do
