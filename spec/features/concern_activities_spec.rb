@@ -3,10 +3,22 @@ require 'spec_helper'
 describe 'Concern Activities' do
   
   describe 'index' do
-    it 'should show a list of concerns' do
+    
+    before(:each) do
+      @concern = FactoryGirl.create(:concern)
       visit concerns_path
-      page.should have_content('Recent concerns')
     end
+
+    it 'should show a list of concerns' do
+      page.should have_content('Recent Concerns')
+      page.should have_link('Edit')
+    end
+
+    it 'should delete a concern' do
+      find('#concern-item').click_link('Delete')
+      page.should have_content('Recent Concerns')
+    end
+
   end
 
   describe 'new' do
@@ -21,26 +33,26 @@ describe 'Concern Activities' do
 
   	it 'should not make a new concern with the wrong details' do
   		lambda do
+        fill_in 'Name', with: ''
+        fill_in 'Description', with: ''
+        fill_in 'Location', with: ''
   			click_button 'Submit'
-  			page.should have_selector('div.error')
   		end.should_not change(Concern, :count)
     end
 
     it 'should make a new concern' do
-  		lambda do
-  			fill_in :name, with: 'No service delivery in Braamfontein'
-  			fill_in :description, with: 'We are tired of not receiving basic services in our town.'
-  			fill_in :location, with: 'Braamfontein, Johannesburg, South Africa'
-  			click_button 'Submit'
-  			page.should have_selector('div.success')
-  		end.should change(Concern, :count).by(1)
+			fill_in 'Name', with: 'No service delivery in Braamfontein'
+			fill_in 'Description', with: 'We are tired of not receiving basic services in our town.'
+			fill_in 'Location', with: 'Braamfontein, Johannesburg, South Africa'
+			click_button 'Submit'
+			page.should have_selector('div#success')
     end
   end
 
   describe 'edit' do
   	before(:each) do
   		@concern = FactoryGirl.create(:concern)
-  		visit edit_concern_path(@concern)
+      visit edit_concern_path(@concern)
   	end
 
   	it 'should render an "edit" form' do
@@ -48,33 +60,23 @@ describe 'Concern Activities' do
   	  page.should have_selector('form')
   	end
 		
-		it 'should not make a new concern with the wrong details' do
-			lambda do
-				fill_in :name, with: ''
-				fill_in :description, with: ''
-				fill_in :location, with: ''
-				click_button 'Submit'
-				page.should have_selector('div.error')
-			end.should_not change(Concern, :count)
+		it 'should not save edits to a concern with the wrong details' do
+			fill_in 'Name', with: ''
+			fill_in 'Description', with: ''
+			fill_in 'Location', with: ''
+			click_button 'Submit'
+			 page.should have_content('Edit a Concern')
 	  end
 
-	  it 'should make a new concern' do
-			lambda do
-				visit new_concern_path
-				fill_in :name, with: 'No service delivery in Sandhurst'
-				fill_in :description, with: 'OH.. MY... GOD.. The laaaights are aaout doll.'
-				fill_in :location, with: 'Sandhurst, Sandton, South Africa'
-				click_button 'Submit'
-				page.should have_selector('div.success')
-			end.should change(Concern, :count).by(1)
+	  it 'should save edits to a concern' do
+			fill_in 'Name', with: 'No service delivery in Sandhurst'
+			fill_in 'Description', with: 'OH.. MY... GOD.. The laaaights are aaout doll.'
+			fill_in 'Location', with: 'Sandhurst, Sandton, South Africa'
+			click_button 'Submit'
+			page.should have_selector('div#success')
+      page.should have_content('Recent Concerns')
 	  end
 	end
 
-	describe 'delete' do
-	  it 'should delete a concern' do
-	  	visit concerns_path
-	  	find('#concern-item').click_link('Delete')
-	    page.should have_content('Raise a Concern')
-	  end
-	end
+
 end

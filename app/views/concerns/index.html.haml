@@ -1,0 +1,18 @@
+%h1
+	Recent Concerns
+	%table
+		%th
+			%td Name
+			%td Description
+			%td Location
+			%td Longitude
+			%td Latitude
+		- @concerns.each do |concern|
+			%tr#concern-item
+				%td= concern.name
+				%td= concern.description
+				%td= concern.location
+				%td= concern.longitude
+				%td= concern.latitude
+				%td= link_to 'Edit', edit_concern_path(concern)
+				%td= link_to 'Delete', concern, method: :delete

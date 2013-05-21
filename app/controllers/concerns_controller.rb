@@ -12,10 +12,11 @@ class ConcernsController < ApplicationController
   end
 
   def create
-  	@concern = Concern.new(params[:concern])
+  	@concern = Concern.new(concern_params)
   	
   	if @concern.save
-  		redirect_to concerns_path, :success => "A new concern has been saved."
+  		flash[:success] = "A new concern has been saved."
+  		redirect_to concerns_path
   	else
   		flash[:error] = "The concern could not be saved."
   		render 'new'
@@ -24,8 +25,9 @@ class ConcernsController < ApplicationController
 
   def update
   	@concern = Concern.find_by_id(params[:id])
-  	if @concern.update_attributes(params[:concern])
-  		redirect_to concerns_path, :success => "A new concern has been saved."
+  	if @concern.update_attributes(concern_params)
+  		flash[:success] = "A new concern has been saved."
+  		redirect_to concerns_path
   	else
   		flash[:error] = "The concern could not be updated."
   		render 'edit'
@@ -38,4 +40,11 @@ class ConcernsController < ApplicationController
     flash[:success] = "Concern removed."
     redirect_to concerns_path
   end
+
+  private
+
+  def concern_params
+    params.required(:concern).permit(:name, :description, :location)
+  end
+
 end
