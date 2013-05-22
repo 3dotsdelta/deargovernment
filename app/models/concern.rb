@@ -5,7 +5,7 @@ class Concern < ActiveRecord::Base
 
 	geocoded_by :location
 
-  before_save :generate_reference_code
+  before_save :generate_reference_code, :geocode
 
   private
 
