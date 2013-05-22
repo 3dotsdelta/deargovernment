@@ -44,6 +44,9 @@ GEM
     daemons (1.1.9)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    ethon (0.5.12)
+      ffi (>= 1.3.0)
+      mime-types (~> 1.18)
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -52,6 +55,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    ffi (1.8.1)
     geocoder (1.1.4)
     haml (4.0.2)
       tilt
@@ -134,10 +138,13 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (1.1.1)
       coffee-rails
+    typhoeus (0.6.3)
+      ethon (~> 0.5.11)
     tzinfo (0.3.37)
     uglifier (2.1.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    vcr (2.4.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -160,4 +167,6 @@ DEPENDENCIES
   sqlite3
   thin
   turbolinks
+  typhoeus (= 0.6.3)
   uglifier (>= 1.3.0)
+  vcr (= 2.4.0)
