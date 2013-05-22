@@ -32,12 +32,12 @@ describe 'Concern Activities' do
   	end
 
   	it 'should not make a new concern with the wrong details' do
-  		lambda do
-        fill_in 'Name', with: ''
-        fill_in 'Description', with: ''
-        fill_in 'Location', with: ''
-  			click_button 'Submit'
-  		end.should_not change(Concern, :count)
+      fill_in 'Name', with: ''
+      fill_in 'Description', with: ''
+      fill_in 'Location', with: ''
+			click_button 'Submit'
+      page.should have_content('Raise a Concern')
+      page.should have_selector('form')
     end
 
     it 'should make a new concern' do
@@ -46,6 +46,7 @@ describe 'Concern Activities' do
 			fill_in 'Location', with: 'Braamfontein, Johannesburg, South Africa'
 			click_button 'Submit'
 			page.should have_selector('div#success')
+      page.should have_content('Recent Concerns')
     end
   end
 
@@ -65,7 +66,7 @@ describe 'Concern Activities' do
 			fill_in 'Description', with: ''
 			fill_in 'Location', with: ''
 			click_button 'Submit'
-			 page.should have_content('Edit a Concern')
+			page.should have_content('Edit a Concern')
 	  end
 
 	  it 'should save edits to a concern' do
