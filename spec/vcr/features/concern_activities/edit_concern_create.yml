@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=Kliptown,%20Soweto,%20Johannesburg&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 May 2013 13:48:22 GMT
+      Expires:
+      - Thu, 23 May 2013 13:48:22 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: US-ASCII
+      string: ! "{\n   \"results\" : [\n      {\n         \"address_components\" :
+        [\n            {\n               \"long_name\" : \"Kliptown\",\n               \"short_name\"
+        : \"Kliptown\",\n               \"types\" : [ \"train_station\", \"transit_station\",
+        \"establishment\" ]\n            },\n            {\n               \"long_name\"
+        : \"Klipspruit 298-Iq\",\n               \"short_name\" : \"Klipspruit 298-Iq\",\n
+        \              \"types\" : [ \"sublocality\", \"political\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Soweto\",\n               \"short_name\"
+        : \"Soweto\",\n               \"types\" : [ \"locality\", \"political\" ]\n
+        \           },\n            {\n               \"long_name\" : \"Johannesburg\",\n
+        \              \"short_name\" : \"Johannesburg\",\n               \"types\"
+        : [ \"administrative_area_level_3\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"City of Johannesburg Metropolitan Municipality\",\n
+        \              \"short_name\" : \"City of Johannesburg Metropolitan Municipality\",\n
+        \              \"types\" : [ \"administrative_area_level_2\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"Gauteng\",\n
+        \              \"short_name\" : \"GP\",\n               \"types\" : [ \"administrative_area_level_1\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"South Africa\",\n               \"short_name\" : \"ZA\",\n               \"types\"
+        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"1809\",\n               \"short_name\" : \"1809\",\n               \"types\"
+        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
+        : \"Kliptown, Soweto 1809, South Africa\",\n         \"geometry\" : {\n            \"location\"
+        : {\n               \"lat\" : -26.27281930,\n               \"lng\" : 27.88763520\n
+        \           },\n            \"location_type\" : \"APPROXIMATE\",\n            \"viewport\"
+        : {\n               \"northeast\" : {\n                  \"lat\" : -26.27147031970850,\n
+        \                 \"lng\" : 27.88898418029151\n               },\n               \"southwest\"
+        : {\n                  \"lat\" : -26.27416828029150,\n                  \"lng\"
+        : 27.88628621970850\n               }\n            }\n         },\n         \"postcode_localities\"
+        : [],\n         \"types\" : [ \"train_station\", \"transit_station\", \"establishment\"
+        ]\n      }\n   ],\n   \"status\" : \"OK\"\n}\n"
+    http_version: 
+  recorded_at: Wed, 22 May 2013 13:48:23 GMT
+recorded_with: VCR 2.4.0

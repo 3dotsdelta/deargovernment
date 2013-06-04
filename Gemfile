@@ -32,21 +32,25 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Added to initial commit
+
 group :test, :development do
 	gem 'rspec-rails', '2.13.1'
+	gem 'vcr', '2.4.0'
 end
-
-# Added to initial commit
 
 group :test do
 	 gem "factory_girl_rails", '4.2.1'
 	 gem 'capybara', '2.1.0'
 end
 
+gem 'webmock'
 gem 'thin'
 gem 'simple_form'
 gem 'haml'
 gem 'geocoder'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

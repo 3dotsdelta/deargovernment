@@ -1,0 +1,8 @@
+%strong
+	= @concern.name
+
+= simple_form_for @concern do |f|
+	= f.input :name
+	= f.input :description
+	= f.input :location
+	= f.submit 'Submit'
