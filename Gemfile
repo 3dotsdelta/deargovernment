@@ -36,7 +36,7 @@ end
 
 group :test, :development do
 	gem 'rspec-rails', '2.13.1'
-	gem 'vcr', '2.4.0'
+	gem 'vcr'
 end
 
 group :test do
